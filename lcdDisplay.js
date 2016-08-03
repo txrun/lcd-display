@@ -71,17 +71,17 @@ function splitDigits(input) {
   return inputArray;
 }
 
-function displayDigit(characterArrays) {
-  var inputDigits = splitDigits(678);
+function displayDigit(input) {
+
+  var inputDigits = splitDigits(input);
   var mappedCharacterArray = inputDigits.map(function (currentValue, i) {
-
+    var characterArray = numberToCharacterMap[currentValue];
+    characterArray.forEach(function(line) {
+      var ch = line.join("");
+      console.log(ch);
+    });    
   });
-
-  characterArrays.forEach(function(line, i, linesArray)
-  {
-    var ch = line.join("");
-    console.log(ch);
-  });
+  return mappedCharacterArray;
 }
 
 function scale(input, scaleToSize){
@@ -135,6 +135,16 @@ function displayScaledDigit(expandedCharacterArray) {
   });
 }
 
-var inputDigit = displayDigit(numberToCharacterMap[6]);
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+// rl.on('line',(line) => {
+
+// });
+
+// var inputDigit = displayDigit(numberToCharacterMap[6]);
+displayDigit(62);
 var scaledDigit = scale(6, 4);
 displayScaledDigit(scaledDigit);
