@@ -84,16 +84,18 @@ function displayDigit(input) {
   return mappedCharacterArray;
 }
 
+//scales a single digit
 function scale(input, scaleToSize){
   var scaledArray = [];
   var spaces = [];
-  var mergedArray =[];
-  var array = [];
-  var num = input;
 
-  array = numberToCharacterMap[input];
+  var digitArray = splitDigits(input);
 
-  array.forEach(function(line, i, mainArray){
+  digitArray.forEach(function(value, i){
+
+  var array = numberToCharacterMap[value];
+
+  array.forEach(function(line){
     if(line.indexOf('|') === -1 && line.indexOf('-') === -1) {
       spaces = ' '.repeat(line.length + scaleToSize -1);
       scaledArray.push(spaces.split(""));
@@ -119,32 +121,19 @@ function scale(input, scaleToSize){
       scaledArray.push(line);
     }
   });
-  return scaledArray;
-}
-
-function combineScaledArrays(scaledDigitArray)  {
-  var combinedArray = [];
-  combinedArray +=scaledDigitArray;
-  return scaledDigitArray;
-}
+  if( i === digitArray.length -1)
+    displayScaledDigit(scaledArray);  
+  });
+  }
 
 function displayScaledDigit(expandedCharacterArray) {
-  expandedCharacterArray.forEach(function(line) {
+    expandedCharacterArray.forEach(function(line) {
     var ch = line.join("");
     console.log(ch);
   });
 }
 
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
-
-// rl.on('line',(line) => {
-
-// });
-
-// var inputDigit = displayDigit(numberToCharacterMap[6]);
-displayDigit(62);
-var scaledDigit = scale(6, 4);
-displayScaledDigit(scaledDigit);
+var inputNumber = 62;
+displayDigit(inputNumber);
+var scaledDigit = scale(823, 4);
+// displayScaledDigit(scaledDigit);
