@@ -73,7 +73,13 @@ const LCD = {
 
 function display(key) {
     var digit = LCD[key];
-    console.log(digit);
+    digit.forEach(function(line) {
+        console.log(line.join(""));
+    });
 }
 
-display(8);
+// Code to test.
+for (var i = 0; i < 10; i++) {
+    display(i);
+    console.log();
+}
