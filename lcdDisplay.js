@@ -71,13 +71,9 @@ const LCD = {
     ]
 };
 
-console.log(LCD[1]);
-console.log(LCD[2]);
-console.log(LCD[3]);
-console.log(LCD[4]);
-console.log(LCD[5]);
-console.log(LCD[6]);
-console.log(LCD[7]);
-console.log(LCD[8]);
-console.log(LCD[9]);
-console.log(LCD[0]);
+function display(key) {
+    var digit = LCD[key];
+    console.log(digit);
+}
+
+display(8);
