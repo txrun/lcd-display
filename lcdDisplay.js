@@ -78,8 +78,23 @@ function display(key) {
     });
 }
 
-// Code to test.
-for (var i = 0; i < 10; i++) {
-    display(i);
-    console.log();
+
+function scaleHorizontally(sizeOneDigit, sizeToScale) {
+    var scaled = sizeOneDigit.map(function(row){
+        var size = sizeToScale-1;
+        while( size > 0) {
+            size --;
+            row.splice(1, 0, row[1]);
+        }
+    });
+    return scaled;
+}
+
+for(var i = 0; i < 9; i++)
+{
+    var num = LCD[i];
+    scaleHorizontally(num, 3);
+    console.log(i);
+    console.log(num);
+    console.log(" ");
 }
