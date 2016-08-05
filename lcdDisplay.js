@@ -80,21 +80,19 @@ function display(key) {
 
 
 function scaleHorizontally(sizeOneDigit, sizeToScale) {
-    var scaled = sizeOneDigit.map(function(row){
-        var size = sizeToScale-1;
-        while( size > 0) {
-            size --;
-            row.splice(1, 0, row[1]);
-        }
+    return sizeOneDigit.map(function(row) {
+        var size = sizeToScale - 1;
+        return(row.slice(0, 2)        
+            .concat(row[1].repeat(size - 1).split(''))
+            .concat(row.slice(2)));
     });
-    return scaled;
 }
 
 for(var i = 0; i < 9; i++)
 {
     var num = LCD[i];
-    scaleHorizontally(num, 3);
+    var result = scaleHorizontally(num, 3);
     console.log(i);
-    console.log(num);
+    console.log(result);
     console.log(" ");
 }
