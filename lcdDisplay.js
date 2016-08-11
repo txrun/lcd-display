@@ -104,13 +104,14 @@ function scaleHorizontally(sizeOneDigit, sizeToScale) {
 function scaleVertically(horizontallyScaledDigit, sizeToScale) {
     
     var intermediateVerticallyScaledRow = repeatItemAtArrayIndex(horizontallyScaledDigit, 1, sizeToScale-1);
-    var fullyScaledDigit = repeatItemAtArrayIndex(intermediateVerticallyScaledRow, 5, sizeToScale-1);
+    var fullyScaledDigit = repeatItemAtArrayIndex(intermediateVerticallyScaledRow, sizeToScale + 2, sizeToScale-1);
     return fullyScaledDigit;
 }
 
+var scaleSize = 4;
 for(var i = 0; i < 9; i++) {
     var num = LCD[i];
-    var arrayResult = scaleHorizontally(num, 3);
-    display (scaleVertically(arrayResult, 3));
+    var arrayResult = scaleHorizontally(num, scaleSize);
+    display (scaleVertically(arrayResult, scaleSize));
     console.log(" ");
 }
