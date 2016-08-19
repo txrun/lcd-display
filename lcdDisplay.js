@@ -1,3 +1,5 @@
+const readLine = require('readline');
+
 const LCD = {
     0: [
         [' ', '-', ' '],
@@ -88,7 +90,6 @@ function repeatItemAtArrayIndex(array, position, times) {
     for (var i = 0; i < times; i++) {
        items.push( array[position] );
     }
-
     return left.concat(items, right);
 }
 
@@ -108,10 +109,26 @@ function scaleVertically(horizontallyScaledDigit, sizeToScale) {
     return fullyScaledDigit;
 }
 
-var scaleSize = 4;
-for(var i = 0; i < 9; i++) {
-    var num = LCD[i];
-    var arrayResult = scaleHorizontally(num, scaleSize);
-    display (scaleVertically(arrayResult, scaleSize));
-    console.log(" ");
-}
+const r1 = readLine.createInterface({
+    input : process.stdin,
+    output : process.stdout
+});
+
+r1.question('Enter the digits: ',(inputDigits) => {
+
+    var digitsArray = inputDigits.toString().split('');
+    var scaleSize = 4;
+    for (var i = 0; i < digitsArray.length; i++) {
+        var num = LCD [digitsArray[i]];
+        var scaledHorizontally = scaleHorizontally(num, scaleSize);
+        display (scaleVertically(scaledHorizontally, scaleSize));
+        console.log(" ");
+    }
+    r1.close();
+});
+
+// var scaleSize = 4;
+
+// for(var i = 0; i < 9; i++) {
+//     var num = LCD[i];
+//     var arrayResult = scaleHorizontally(num, scaleSize);
